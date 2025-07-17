@@ -1,22 +1,53 @@
-.app {
+/* Use your latest version from earlier */
+.app-container {
+  padding: 1rem;
+  font-family: 'Arial', sans-serif;
+  background: #121212;
+  color: #fff;
+  min-height: 100vh;
+}
+.title {
   text-align: center;
-  font-family: Arial, sans-serif;
-
-  .mvp-container {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    margin-top: 2rem;
-  }
-
-  video, canvas {
-    border: 1px solid #ccc;
-    border-radius: 10px;
-  }
-
-  button {
-    margin: 0.5rem;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-  }
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #90ee90;
+}
+.main-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+.camera-box, .voice-box {
+  background: #1c1c1c;
+  padding: 1rem;
+  border-radius: 10px;
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+}
+button {
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  background: #6a5acd;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+button:hover {
+  background: #7b68ee;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+.detected-items, .transcript-box, .log-section {
+  margin-top: 1rem;
+  background: #2e2e2e;
+  padding: 0.5rem;
+  border-radius: 6px;
+  color: #90ee90;
 }

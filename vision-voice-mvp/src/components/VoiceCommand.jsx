@@ -1,22 +1,26 @@
+// components/VoiceCommand.jsx
 import React from 'react';
-import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 
-const VoiceCommand = () => {
-  const { transcript, listening, resetTranscript } = useSpeechRecognition();
+const VoiceCommand = ({ onTranscript }) => {
+  const handleListen = () => {
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    recognition.lang = 'en-US';
+    recognition.interimResults = false;
 
-  if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
-    return <span>Browser doesn't support speech recognition.</span>;
-  }
+    recognition.onresult = (event) => {
+      const text = event.results[0][0].transcript;
+      onTranscript(text);
+    };
 
-  return (
-    <div>
-      <button onClick={SpeechRecognition.startListening}>🎙️ Start Listening</button>
-      <button onClick={SpeechRecognition.stopListening}>🛑 Stop</button>
-      <button onClick={resetTranscript}>🔁 Reset</button>
-      <p><strong>Status:</strong> {listening ? 'Listening...' : 'Stopped'}</p>
-      <p><strong>You said:</strong> {transcript}</p>
-    </div>
-  );
+    recognition.onerror = (e) => {
+      console.error('Speech recognition error:', e);
+      onTranscript('');
+    };
+
+    recognition.start();
+  };
+
+  return <button onClick={handleListen}>🎙️ Start Speaking</button>;
 };
 
 export default VoiceCommand;
