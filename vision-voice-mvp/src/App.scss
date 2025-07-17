@@ -1,0 +1,22 @@
+.app {
+  text-align: center;
+  font-family: Arial, sans-serif;
+
+  .mvp-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 2rem;
+  }
+
+  video, canvas {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  }
+
+  button {
+    margin: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+}
